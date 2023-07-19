@@ -15,15 +15,14 @@ package com.azero.sampleapp.activity.template;
 
 import android.content.Intent;
 import android.os.Bundle;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.WindowManager;
 
 import com.azero.platforms.core.PlatformInterface;
+import com.azero.sdk.AzeroManager;
 import com.azero.sdk.impl.TemplateRuntime.TemplateRuntimeHandler;
-import com.azero.sdk.manager.AzeroManager;
-import com.azero.sdk.util.Constant;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 public abstract class BaseTemplateActivity extends AppCompatActivity {
     private boolean foreground = false;
@@ -38,7 +37,7 @@ public abstract class BaseTemplateActivity extends AppCompatActivity {
         initData(getIntent());
 
         PlatformInterface templateInterface = AzeroManager.getInstance()
-                .getHandler(Constant.TEMPLATE_HANDLER);
+                .getHandler(AzeroManager.TEMPLATE_HANDLER);
         if (templateInterface != null)
             templateRuntimeHandler = (TemplateRuntimeHandler) templateInterface;
     }

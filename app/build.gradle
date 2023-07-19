@@ -59,7 +59,7 @@ dependencies {
     }
 
     implementation 'com.google.zxing:core:3.3.0'
-    //implementation(name: 'denoise-release', ext: 'aar')
+    implementation(name: 'denoise-release', ext: 'aar')
     implementation(name: 'azero-release', ext: 'aar')
 
     implementation 'com.alibaba:fastjson:1.2.14'

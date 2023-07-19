@@ -13,6 +13,7 @@
 package com.azero.sampleapp.activity.playerinfo.playerpager;
 
 import android.os.Bundle;
+import androidx.constraintlayout.widget.Group;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -23,9 +24,9 @@ import com.azero.platforms.iface.MediaPlayer;
 import com.azero.sampleapp.R;
 import com.azero.sampleapp.activity.playerinfo.bean.PushMessage;
 import com.azero.sampleapp.activity.template.ConfigureTemplateView;
+import com.azero.sdk.AzeroManager;
 import com.azero.sdk.event.Command;
 import com.azero.sdk.impl.MediaPlayer.MediaPlayerHandler;
-import com.azero.sdk.manager.AzeroManager;
 import com.azero.sdk.util.Constant;
 import com.azero.sdk.util.log;
 import com.jakewharton.rxbinding3.view.RxView;
@@ -38,8 +39,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.concurrent.TimeUnit;
-
-import androidx.constraintlayout.widget.Group;
 
 import static com.azero.sampleapp.util.Utils.stringForTime;
 
@@ -76,7 +75,7 @@ public class PlayerInfoFragment extends BasePlayerInfoFragment {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        mMediaPlayer = (MediaPlayerHandler) AzeroManager.getInstance().getHandler(Constant.AUDIO_HANDLER);
+        mMediaPlayer = (MediaPlayerHandler) AzeroManager.getInstance().getHandler(AzeroManager.AUDIO_HANDLER);
         EventBus.getDefault().register(this);
         mTitle = rootView.findViewById(R.id.title);
         mTitleSubtext1 = rootView.findViewById(R.id.titleSubtext1);
@@ -93,7 +92,7 @@ public class PlayerInfoFragment extends BasePlayerInfoFragment {
         progressGroup = rootView.findViewById(R.id.progressGroup);
 
         mControlPlayPause.setEnabled(false);
-        mControlPlayPause.setChecked(true);
+        mControlPlayPause.setChecked(false);
         initClicks();
         try {
             Bundle bundle = getArguments();
@@ -211,7 +210,6 @@ public class PlayerInfoFragment extends BasePlayerInfoFragment {
                 break;
             case "PLAY_PAUSE":
                 mControlPlayPause.setEnabled(enabled);
-                mControlPlayPause.setChecked(selected);
                 break;
             case "NEXT":
                 mControlNext.setEnabled(enabled);
@@ -271,10 +269,8 @@ public class PlayerInfoFragment extends BasePlayerInfoFragment {
     }
 
     public void start() {
-//        mControlPrev.setEnabled(false);
         mControlPlayPause.setEnabled(true);
         mControlPlayPause.setChecked(true);
-//        mControlNext.setEnabled(false);
     }
 
     public void stop() {

@@ -14,16 +14,19 @@
 package com.azero.sampleapp.activity.alert;
 
 import android.content.Intent;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.azero.sampleapp.R;
-import com.azero.sampleapp.activity.alert.bean.AlertInfo;
 import com.azero.sampleapp.activity.template.BaseDisplayCardActivity;
+import com.azero.sampleapp.activity.alert.bean.AlertInfo;
 import com.azero.sampleapp.activity.template.ConfigureTemplateView;
+import com.azero.sdk.AzeroManager;
 import com.azero.sdk.impl.Alerts.AlertsHandler;
-import com.azero.sdk.manager.AzeroManager;
 import com.azero.sdk.util.Constant;
 import com.azero.sdk.util.log;
 
@@ -31,10 +34,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
-
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 public class AlertsActivity extends BaseDisplayCardActivity implements View.OnClickListener {
     private ImageButton imageButtonBack;
@@ -57,7 +56,7 @@ public class AlertsActivity extends BaseDisplayCardActivity implements View.OnCl
         DividerItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         itemDecoration.setDrawable(ContextCompat.getDrawable(this, R.drawable.alerts_inset));
         mAlertsRecyclerView.addItemDecoration(itemDecoration);
-        mAlerts = (AlertsHandler) AzeroManager.getInstance().getHandler(Constant.ALERT_HANDLER);
+        mAlerts = (AlertsHandler) AzeroManager.getInstance().getHandler(AzeroManager.ALERT_HANDLER);
 
         imageButtonBack = findViewById(R.id.imageButton_back);
         imageButtonBack.setOnClickListener(this);
