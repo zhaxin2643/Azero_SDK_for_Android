@@ -59,7 +59,7 @@ public class MyApplication extends Application implements AudioInputManager.Wake
                 Config.SERVER.PRO,                              //Server    选择使用的服务器  FAT 测试环境 PRO 正式环境
                 true                          //localVAD  是否使用本地VAD
         );
-        config.setShowSetVolume(true);
+//        config.setShowSetVolume(true);
         //定义界面消失时间，不填则使用如下默认值
         config.setTimeoutList(new AzeroConfiguration.TemplateRuntimeTimeout[]{
                 //Template界面在TTS播放完后消失的时间
@@ -71,7 +71,7 @@ public class MyApplication extends Application implements AudioInputManager.Wake
         });
 
         //手机使用下面这个SystemRecord
-        //AudioInputManager audioInputManager = new AudioInputManager(this, new SystemRecord());
+//        AudioInputManager audioInputManager = new AudioInputManager(this, new SystemRecord());
         //开发板使用下面这个BasexRecord
         AudioInputManager audioInputManager = new AudioInputManager(this, new BasexRecord());
         audioInputManager.addWakeUpObserver(this);
