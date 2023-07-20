@@ -19,6 +19,7 @@ import android.os.CountDownTimer;
 import com.azero.sampleapp.impl.audioinput.record.BasexRecord;
 import com.azero.sampleapp.impl.audioinput.record.Record;
 import com.azero.sampleapp.util.CopyConfigTask;
+import com.azero.sampleapp.util.FileUtils;
 import com.azero.sdk.AzeroManager;
 import com.azero.sdk.util.log;
 import com.soundai.open_denoise.denoise.SaiClient;
@@ -138,7 +139,7 @@ public class OpenDenoiseManager {
                 new SaiClient.Callback() {
                     @Override
                     public void onAsrDataCallback(byte[] data, int size) {
-//                        FileUtils.writeFile(data,"/sdcard/asrdata.pcm",true);
+                        FileUtils.writeFile(data,"/sdcard/asrdata.pcm",true);
                         if (denoiseCallback != null) {
                             denoiseCallback.onAsrData(data, size);
                         }

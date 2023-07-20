@@ -4,7 +4,7 @@
 --aec.kInRecord=1
 --aec.kOutRecord=1
 
---mic.kInputAmplify=18
+--mic.kInputAmplify=1
 --mic.kTargetAmpOfAsr=2000
 --mic.kTargetAmpOfVad=10500
 --mic.kTargetAmpOfWake=-5
@@ -38,14 +38,14 @@
 --mic.kGscInRecordOn=1
 
 --paraload.corp=cube
---paraload.mic_num=6
---paraload.speaker_num=1
---paraload.record_num=8
+--paraload.mic_num=4
+--paraload.speaker_num=2
+--paraload.record_num=6
 --paraload.mic_r=0.035
 --paraload.mic_loca=0.035,0,0,0.0175,0.03,0,-0.0175,0.03,0,-0.035,0,0,-0.0175,-0.03,0,0.0175,-0.03,0
---paraload.micarray_type=0
+--paraload.micarray_type=1
 --paraload.wakeup_beam_num=2
---paraload.binfile=wopt_6mic_sai.bin
+--paraload.binfile=wopt_4mic_linear_sai.bin
 --paraload.vad_model_file=saivad.q
 --paraload.kVadLocalOn=1
 --paraload.gsc_wakeup_on=0
@@ -83,7 +83,7 @@
 --voip.kDoaVoip=-9999
 --voip.kVoipRecordOn=1
 
---wake.kWakeupGlobalConfidenceTh=40
+--wake.kWakeupGlobalConfidenceTh=30
 --wake.kUseSecondDnn=1
 --wake.kUseOnlyOneSecondDnn=0
 --wake.kFrameJump1=2

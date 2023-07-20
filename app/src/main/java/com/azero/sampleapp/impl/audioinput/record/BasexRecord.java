@@ -13,6 +13,7 @@
 
 package com.azero.sampleapp.impl.audioinput.record;
 
+import com.azero.sampleapp.util.FileUtils;
 import com.soundai.basex.lib.BasexEventListener;
 import com.soundai.basex.lib.BasexManager;
 
@@ -24,13 +25,13 @@ import com.soundai.basex.lib.BasexManager;
  */
 public class BasexRecord extends Record {
     private static final int RUNTIME = -1;                           // 录音时长，单位帧，-1：一直录音
-    private static final String HW = "hw:0,3";                       // 录音设备，hw:[card],[device]
-    private static final int MIC_NUM = 6;                            // mic 数量
-    private static final int CHANNEL_NUM = 8;                        // channel 数量
-    private static final String CHANNEL_MAP = "0,5,2,1,4,3,6,7";         // 通道顺序
-    private static final int BIT = 32;                               // 位深
+    private static final String HW = "hw:0,7";                       // 录音设备，hw:[card],[device]
+    private static final int MIC_NUM = 4;                            // mic 数量
+    private static final int CHANNEL_NUM = 6;                        // channel 数量
+    private static final String CHANNEL_MAP = "0,1,2,3,4,5";         // 通道顺序
+    private static final int BIT = 16;                               // 位深
     private static final int SAMPLE_RATE = 16000;                    // 采样率
-    private static final int MIC_SHIFT = 14;                         // mic移位，默认不移位，值为16
+    private static final int MIC_SHIFT = 16;                         // mic移位，默认不移位，值为16
     private static final int REF_SHIFT = 16;                         // 回采移位，默认不移位，值为16
     private static final int MODE = 0;                               // 是否加密，默认0
     private static final int PERIOD_SIZE = 128;                      // 缓存大小，对应tinycap 的-p属性
@@ -42,7 +43,7 @@ public class BasexRecord extends Record {
             @Override
             public void onSaveData(byte[] data, int size) {
                 //如需测试工具读取数据是否正常，请打开如下注释，并赋予“空间存储”权限
-//                FileUtils.writeFile(data,"/sdcard/basexdata.pcm",true);
+                FileUtils.writeFile(data,"/sdcard/basexdata.pcm",true);
                 if (listener != null) {
                     listener.onData(data, size);
                 }
