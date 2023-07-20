@@ -139,7 +139,7 @@ public class OpenDenoiseManager {
                 new SaiClient.Callback() {
                     @Override
                     public void onAsrDataCallback(byte[] data, int size) {
-                        FileUtils.writeFile(data,"/sdcard/asrdata.pcm",true);
+                        //FileUtils.writeFile(data,"/sdcard/asrdata.pcm",true);
                         if (denoiseCallback != null) {
                             denoiseCallback.onAsrData(data, size);
                         }

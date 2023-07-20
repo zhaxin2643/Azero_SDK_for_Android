@@ -53,8 +53,8 @@ public class MyApplication extends Application implements AudioInputManager.Wake
 
     public void initAzero() throws RuntimeException {
         Config config = new Config(
-                "speaker_azero_test",         //productID 网站申请
-                "5da580abda66010006f7e6c4",             //ClientID  网站申请
+                "",         //productID 网站申请
+                "",             //ClientID  网站申请
                 Utils.getDeviceSn(this),                    //DeviceSN 传入Mac地址或IMEI号，必须保证设备唯一
                 Config.SERVER.PRO,                              //Server    选择使用的服务器  FAT 测试环境 PRO 正式环境
                 true                          //localVAD  是否使用本地VAD
@@ -71,7 +71,7 @@ public class MyApplication extends Application implements AudioInputManager.Wake
         });
 
         //手机使用下面这个SystemRecord
-//        AudioInputManager audioInputManager = new AudioInputManager(this, new SystemRecord());
+        //AudioInputManager audioInputManager = new AudioInputManager(this, new SystemRecord());
         //开发板使用下面这个BasexRecord
         AudioInputManager audioInputManager = new AudioInputManager(this, new BasexRecord());
         audioInputManager.addWakeUpObserver(this);

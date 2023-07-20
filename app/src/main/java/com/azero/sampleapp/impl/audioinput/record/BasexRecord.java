@@ -43,7 +43,7 @@ public class BasexRecord extends Record {
             @Override
             public void onSaveData(byte[] data, int size) {
                 //如需测试工具读取数据是否正常，请打开如下注释，并赋予“空间存储”权限
-                FileUtils.writeFile(data,"/sdcard/basexdata.pcm",true);
+                //FileUtils.writeFile(data,"/sdcard/basexdata.pcm",true);
                 if (listener != null) {
                     listener.onData(data, size);
                 }
